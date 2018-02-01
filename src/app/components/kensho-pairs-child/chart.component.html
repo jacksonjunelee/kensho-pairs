@@ -1,0 +1,14 @@
+<div class="table-container">
+  <table style="width:100%">
+    <tr>
+      <th>Pair1</th>
+      <th>Pair2</th>
+      <th>Value</th>
+    </tr>
+    <tr *ngFor="let pairs of chartData?.correlations">
+      <td>{{ pairs.pair[0] }}</td>
+      <td>{{ pairs.pair[1] }}</td>
+      <td>{{ pairs.value }}</td>
+    </tr>
+  </table>
+</div>

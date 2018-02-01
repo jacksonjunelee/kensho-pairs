@@ -11,7 +11,7 @@ export class KenshoPairsContainerComponent {
   public tickers: Tickers;
   public displayChart: string;
   public showChartModal: boolean;
-  public pairs: any;
+  public pairData: any;
 
   constructor(private KenshoPairsService: KenshoPairsService) {
     this.KenshoPairsService.getTickers().subscribe((tickers) => {
@@ -21,20 +21,15 @@ export class KenshoPairsContainerComponent {
     });
   }
 
-  // public closeChartModal(): void {
-  //   this.selectedChart = null;
-  //   this.chartData = null;
-  //   this.showChartModal = false;
-  // }
-  //
-  // public showCharts(event: string): void {
-  //   this.displayChart = event;
-  // }
-  //
+  public closeChartModal(): void {
+    this.pairData = null;
+    this.showChartModal = false;
+  }
+
   public getPairs(event: any): void {
     const tickers = Object.values(event);
     this.KenshoPairsService.getPairs(tickers).subscribe((pairData) => {
-      this.pairs = pairData;
+      this.pairData = pairData;
     }, (error) => {
       console.log('get Pairs service error');
     });

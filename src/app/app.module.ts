@@ -10,6 +10,10 @@ import { KenshoPairsComponents } from './components/index';
 // services
 import { KenshoPairsService } from './services/kensho-pairs.service';
 
+// imports
+import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +22,8 @@ import { KenshoPairsService } from './services/kensho-pairs.service';
   imports: [
     BrowserModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    Angular2FontawesomeModule
   ],
   providers: [KenshoPairsService],
   bootstrap: [AppComponent]

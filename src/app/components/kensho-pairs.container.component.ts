@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { KenshoPairsService } from '../services/kensho-pairs.service';
 import { OnInit } from '@angular/core';
 import { Tickers } from '../models/tickers';
+import { Pairs } from '../models/pairs';
 
 @Component({
   selector: 'kensho-pairs-container',
@@ -11,7 +12,7 @@ export class KenshoPairsContainerComponent {
   public tickers: Tickers;
   public displayChart: string;
   public showChartModal: boolean;
-  public pairData: any;
+  public pairData: Pairs;
 
   constructor(private KenshoPairsService: KenshoPairsService) {
     this.KenshoPairsService.getTickers().subscribe((tickers) => {

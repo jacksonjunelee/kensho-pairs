@@ -22,7 +22,7 @@ export class KenshoPairsService {
       } else {
         query += `&tickers=${element}`;
       }
-    })
+    });
 
     const url = `${this.apiUrl}/correlation/?${query}`;
     return this.http.get(url);

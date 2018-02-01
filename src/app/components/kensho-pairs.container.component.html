@@ -1,0 +1,22 @@
+<div class="kensho-pairs">
+  <div *ngIf="tickers">
+    <kensho-pairs-header
+      [tickers]="tickers"
+      (showChart)="getChart($event, 'all')">
+    </kensho-pairs-header>
+  </div>
+</div>
+
+<!-- <div class="chart-lightbox-container" *ngIf="showChartModal">
+  <div class="chart-lightbox">
+    <blockchain-chart
+      [chartData]="chartData"
+    ></blockchain-chart>
+  </div>
+
+  <div class="button-group flex-container">
+      <button type="button" *ngFor="let time of timeLists" (click)="getChart(selectedChart, time.time)">{{time.text}}</button>
+  </div>
+
+  <i fa [name]="'times'" [size]=3 (click)="closeChartModal()"></i>
+</div> -->

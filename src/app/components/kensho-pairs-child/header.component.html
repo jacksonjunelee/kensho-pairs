@@ -1,0 +1,7 @@
+<div class="header">
+  <div class="button-group flex-container flex-wrapper">
+    <button type="button" *ngFor="let ticker of tickers.tickers" [ngClass]="isSelected('')">{{ticker}}</button>
+  </div>
+</div>
+
+<button type="button" name="pairs" class="show-pairs">Show Pairs</button>

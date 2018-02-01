@@ -11,10 +11,13 @@ export class KenshoPairsContainerComponent {
   public tickers: Tickers;
   public displayChart: string;
   public showChartModal: boolean;
+  public pairs: any;
 
   constructor(private KenshoPairsService: KenshoPairsService) {
     this.KenshoPairsService.getTickers().subscribe((tickers) => {
       this.tickers = tickers;
+    }, (error) => {
+      console.log('get Tickers service error');
     });
   }
 
@@ -28,11 +31,13 @@ export class KenshoPairsContainerComponent {
   //   this.displayChart = event;
   // }
   //
-  // public getChart(event: string, timespan = 'all', rollingAverage = '1months'): void {
-  //   this.blockchainChartsService.getChart(event, timespan, rollingAverage).subscribe((chartData) => {
-  //     this.selectedChart = event;
-  //     this.chartData = chartData;
-  //   });
-  //   this.showChartModal = true;
-  // }
+  public getPairs(event: any): void {
+    const tickers = Object.values(event);
+    this.KenshoPairsService.getPairs(tickers).subscribe((pairData) => {
+      this.pairs = pairData;
+    }, (error) => {
+      console.log('get Pairs service error');
+    });
+    this.showChartModal = true;
+  }
 }

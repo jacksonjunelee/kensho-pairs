@@ -8,20 +8,23 @@ import { Tickers } from '../../models/tickers';
 })
 export class HeaderComponent {
   @Input() tickers: Tickers;
-  // @Output() buttonMouseOver: EventEmitter<string> = new EventEmitter<string>();
-  @Output() showChart: EventEmitter<string> = new EventEmitter<string>();
+  @Output() showPairs: EventEmitter<any> = new EventEmitter<any>();
 
+  public selectedTickers = {};
 
-  public isSelected(chart: string): string {
-    return 'selected-button';
+  public isSelected(i: number): string {
+    return this.selectedTickers[i] ? 'selected-button' : '';
   }
-  //
-  // public mouseOver(chart: string): void {
-  //   this.selectedButton = chart;
-  //   this.buttonMouseOver.emit(chart);
-  // }
 
-  public clickedChart(id: string) {
-    this.showChart.emit(id);
+  public addTicker(i: number, value: string): void {
+    if (this.selectedTickers[i]) {
+      delete this.selectedTickers[i];
+    } else {
+      this.selectedTickers[i] = value;
+    }
+  }
+
+  public clickedShowPairs(): void {
+    this.showPairs.emit(this.selectedTickers);
   }
 }

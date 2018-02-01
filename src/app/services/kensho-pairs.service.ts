@@ -13,4 +13,18 @@ export class KenshoPairsService {
     const url = `${this.apiUrl}/tickers`;
     return this.http.get(url);
   }
+
+  getPairs(tickers: any) {
+    let query = '';
+    tickers.forEach((element, index) => {
+      if (index === 0) {
+        query += `tickers=${element}`;
+      } else {
+        query += `&tickers=${element}`;
+      }
+    })
+
+    const url = `${this.apiUrl}/correlation/?${query}`;
+    return this.http.get(url);
+  }
 }
